@@ -24,11 +24,18 @@ class users_controller extends base_controller {
 
     public function profile($user_name = NULL) {
 
-        $view = View::instance('v_users_profile');
+        #Set up the View
+        $this->template->content =  View::instance('v_users_profile');
 
-        $view->user_name = $user_name;
+        #Pass the data to the
+        $this->template->content->user_name = $user_name;
 
-        echo $view;
+        #Display the View
+        echo $this->template;
+
+        //$view = View::instance('v_users_profile');
+        //$view->user_name = $user_name;
+        //echo $view;
     
     }
 
