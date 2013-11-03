@@ -22,7 +22,15 @@ class users_controller extends base_controller {
 
     public function p_signup(){
 
+        
+        $_POST['created'] = Time::now();
+        $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+        $_POST['token'] = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
+        DB::instance(DB_NAME)->insert_row('users', $_POST);
+
+        #Send them to the login page
+        Router::redirect('/users/login');
 
     }
     
