@@ -2,19 +2,15 @@
 
 <form method='POST' action='/users/p_login'>
 
-	Email: <input type='text' name='email'><br>
-	Password: <input type='password' name='password'><br>
-
-
 	<?php if(isset($error)): ?>
         <div class='error'>
             Login failed. Please double check your email and password.
         </div>
         <br>
     <?php endif; ?>
-	
-
-	<input type='Submit' value='Log in'>
+	<div class='formlabel'>Email:</div> <input type='text' name='email' class='forminput'><br /><br />
+	<div class='formlabel'>Password:</div> <input type='password' name='password' class='forminput'><br /><br />
+	<input type='Submit' value='Log in' class='formbutton'>
 
 </form>
 

@@ -4,7 +4,8 @@
 	<title><?php if(isset($title)) echo $title; ?></title>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
-	
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
 	<script src='jquery.js'></script>
 
 	<!-- Controller Specific JS/CSS -->
@@ -35,9 +36,11 @@
         <?php endif; ?>
 
     </div>
-    
-	<?php if(isset($content)) echo $content; ?>
-
-	<?php if(isset($client_files_body)) echo $client_files_body; ?>
+    <div id='content'>
+	   <?php if(isset($content)) echo $content; ?>
+    </div>
+    <div id='footer'>
+	   <?php if(isset($client_files_body)) echo $client_files_body; ?>
+    </div>
 </body>
 </html>
