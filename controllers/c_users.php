@@ -35,11 +35,14 @@ class users_controller extends base_controller {
     }
     
 
-    public function login() {
+    public function login($error = NULL) {
         
         #Setup view
         $this->template->content = View::instance('v_users_login');
         $this->template->title = "Login";
+
+        # Pass data to the view
+        $this->template->content->error = $error;
 
         #Render template
         echo $this->template;
@@ -67,7 +70,7 @@ class users_controller extends base_controller {
         if(!$token) {
 
             # Send them back to the login page
-            Router::redirect("/users/login/");
+            Router::redirect("/users/login/error");
 
          # But if we did, login succeeded! 
         } 
