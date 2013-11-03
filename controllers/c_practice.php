@@ -32,10 +32,14 @@ class practice_controller extends base_controller {
 		DB::instance(DB_NAME)->insert('users', $new_user);
 		*/
 
+		#pretend this is data from a form
 		$_POST['first_name'] = 'Yusuf';
-		
+
+
+		#Make sure it's sanitized first
 		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
+		#Build the query
 		$q = 'SELECT email 
 		FROM users
 		WHERE first_name = "'.$_POST['first_name'].'"';
