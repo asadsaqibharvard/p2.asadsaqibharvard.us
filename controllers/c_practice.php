@@ -1,6 +1,49 @@
 <?php
 class practice_controller extends base_controller {
 
+	public function test_db(){
+
+
+		/*
+		#INSERT PRACTICE
+		$q = 'INSERT INTO users
+		SET first_name = "Daoud",
+		last_name = "Abbas"';
+
+		echo $q;
+		*/
+
+		/*
+		#UPDATE PACTICE
+		$q = 'UPDATE users
+		SET email = "yusi@aol.com" 
+		WHERE first_name = "Yusuf"';
+		
+		DB::instance(DB_NAME)->query($q);
+		*/
+
+		/* New User array add to DB example
+		$new_user = Array (
+			'first_name' => 'Micky',
+			'last_name' => 'Abbas',
+			'email' => 'micky@aol.com'
+		);
+
+		DB::instance(DB_NAME)->insert('users', $new_user);
+		*/
+
+		$_POST['first_name'] = 'Yusuf';
+		
+		$_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+		$q = 'SELECT email 
+		FROM users
+		WHERE first_name = "'.$_POST['first_name'].'"';
+
+		echo DB::instance(DB_NAME)->select_field($q);
+
+	}
+
 	public function test1() {
 
 		
