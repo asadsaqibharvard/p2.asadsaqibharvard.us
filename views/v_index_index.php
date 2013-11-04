@@ -4,7 +4,7 @@
 	Welcome back <?=$user->first_name;?>
 <?php else: ?>
 	<div class='headertext'>
-	Welcome to my app. Please sign up or log in
+	Welcome to YUSI!. Please sign up or log in.
 	</div>
 	<br />
 	<img src='/images/lion_cute.png' class='imagecenter' />
