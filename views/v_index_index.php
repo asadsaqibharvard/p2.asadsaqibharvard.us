@@ -12,5 +12,11 @@
 	<div class='center'>
 	<a href='/users/signup' class='homebutton'>Signup</a>
 	<a href='/users/login' class='homebutton'>Login</a>
+	<br /><br />
+	My +2 features are:
+	<br />
+	1) Upload profile picture and view users profile pictures
+	<br />
+	2) View your followers
 </div>
 <?php endif; ?>
