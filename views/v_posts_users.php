@@ -1,6 +1,7 @@
 <?php foreach($users as $user): ?>
 
     <!-- Print this user's name -->
+    <img src='/uploads/<?=$user['user_id']?>.jpg' width='50' height='50' />
     <?=$user['first_name']?> <?=$user['last_name']?>
 
     <!-- If there exists a connection with this user, show a unfollow link -->

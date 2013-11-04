@@ -88,7 +88,7 @@ class users_controller extends base_controller {
         setcookie("token", $token, strtotime('+1 year'), '/');
 
         # Send them to the main page - or whever you want them to go
-        Router::redirect("/");
+        Router::redirect("/posts");
 
         }
 
@@ -119,52 +119,73 @@ class users_controller extends base_controller {
 
     public function profile($user_name = NULL) {
 
-        /*
-        #Set up the View
-        $this->template->content =  View::instance('v_users_profile');
-        $this->template->title = "Profile";
-
-
-        #Load client files
-        $client_files_head = Array(
-            '/css/profile.css' 
-            );
-
-        $this->template->client_files_head = Utils::load_client_files($client_files_head);
-
-
-        $client_files_body = Array(
-            '/js/profile.js'
-            );
-
-        $this->template->client_files_body = Utils::load_client_files($client_files_body);
-
-        #Pass the data to the View
-        $this->template->content->user_name = $user_name;
-
-        #Display the View
-        echo $this->template;
-
-        //$view = View::instance('v_users_profile');
-        //$view->user_name = $user_name;
-        //echo $view;
-        */
-
-
          # If user is blank, they're not logged in; redirect them to the login page
         if(!$this->user) {
          Router::redirect('/users/login');
         }
 
-        # If they weren't redirected away, continue:
-
         # Setup view
         $this->template->content = View::instance('v_users_profile');
         $this->template->title   = "Profile of".$this->user->first_name;
 
+        # get list of users following user
+        $q = "SELECT u.* 
+            FROM users u inner join users_users uu on u.user_id = uu.user_id
+            WHERE uu.user_id_followed = ".$this->user->user_id;
+
+        $followers = DB::instance(DB_NAME)->select_array($q, 'user_id');
+
+        # Pass data (users and connections) to the view
+        $this->template->content->followers = $followers;
+
+
         # Render template
         echo $this->template;
-    
+
+    }
+
+    public function saveprofile(){
+
+            $allowedExts = array("gif", "jpeg", "jpg", "png","GIF", "JPEG", "JPG", "PNG");
+            $temp = explode(".", $_FILES["file"]["name"]);
+            $extension = end($temp);
+            
+            if ((($_FILES["file"]["type"] == "image/gif")
+            || ($_FILES["file"]["type"] == "image/jpeg")
+            || ($_FILES["file"]["type"] == "image/jpg")
+            || ($_FILES["file"]["type"] == "image/pjpeg")
+            || ($_FILES["file"]["type"] == "image/x-png")
+            || ($_FILES["file"]["type"] == "image/png"))
+            && ($_FILES["file"]["size"] < 20000000)
+            && in_array($extension, $allowedExts))
+              {
+              if ($_FILES["file"]["error"] > 0)
+                {
+                echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+                }
+              else
+                {
+                #echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+                #echo "Type: " . $_FILES["file"]["type"] . "<br>";
+                #echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+                #echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+
+                $userimage = "uploads/" . $this->user->user_id . ".jpg";
+
+                if (file_exists($userimage))
+                  {
+                    unlink($userimage);
+                  }
+
+                  move_uploaded_file($_FILES["file"]["tmp_name"], $userimage);
+                  Router::redirect("/users/profile");
+
+                }
+              }
+            else
+              {
+              echo "Invalid file";
+              }
     }
 
 } # end of the class

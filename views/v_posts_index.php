@@ -1,8 +1,13 @@
+<h1>Welcome back <?=$user->first_name;?></h1>
+
 <?php foreach($posts as $post): ?>
 
 <article>
 
-    <h1><?=$post['first_name']?> <?=$post['last_name']?> posted:</h1>
+	<div>
+		<img src='/uploads/<?=$post['post_user_id']?>.jpg' width='50' height='50' />
+		<?=$post['first_name']?> <?=$post['last_name']?> posted:
+	</div>
 
     <p><?=$post['content']?></p>
 

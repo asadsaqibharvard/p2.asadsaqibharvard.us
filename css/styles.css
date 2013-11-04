@@ -15,6 +15,18 @@ a, a:visited{
 	text-decoration: none;
 }
 
+input {
+	width: 500px;
+	height: 40px;
+	font-size:25px;
+	line-height:40px;
+}
+
+textarea {
+	width: 700px;
+	height: 200px;
+}
+
 #menu {
 	background-position: 0 0;
 	background-color: #252525;
@@ -32,7 +44,7 @@ a, a:visited{
 	margin-right: 10px;
 }
 
-#content {
+#maincontent {
 	background-color: #fff;
 	width: 800px;
 	min-height: 400px;
@@ -62,13 +74,6 @@ a, a:visited{
     text-align: center;
 }
 
-input {
-	width: 500px;
-	height: 40px;
-	font-size:25px;
-	line-height:40px;
-}
-
 .formlabel{
 	float: left;
 	width: 100px;
@@ -96,4 +101,5 @@ input {
 	line-height:40px;
 	padding: 10px;
 	margin-right: 20px;
+	border-radius: 15px;
 }

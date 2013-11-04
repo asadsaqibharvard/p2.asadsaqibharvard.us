@@ -1,12 +1,7 @@
 <?php if($user): ?>
 	
-	<pre>
-	<?php
-	print_r($user);
-	?>
-	<pre>
 
-	Hello <?=$user->first_name;?>
+	Welcome back <?=$user->first_name;?>
 <?php else: ?>
 	<div class='headertext'>
 	Welcome to my app. Please sign up or log in

@@ -19,24 +19,26 @@
 
 	<div id='menu'>
 
-        <a href='/'>Home</a>
-
         <!-- Menu for users who are logged in -->
         <?php if($user): ?>
 
-            <a href='/users/logout'>Logout</a>
+            <a href='/posts/users'>Users</a>
+            <a href='/posts/add'>Add Post</a>
+            <a href='/posts'>Posts</a>
             <a href='/users/profile'>Profile</a>
+            <a href='/users/logout'>Logout</a>
 
         <!-- Menu options for users who are not logged in -->
         <?php else: ?>
 
+            <a href='/'>Home</a>
             <a href='/users/signup'>Sign up</a>
             <a href='/users/login'>Log in</a>
 
         <?php endif; ?>
 
     </div>
-    <div id='content'>
+    <div id='maincontent'>
 	   <?php if(isset($content)) echo $content; ?>
     </div>
     <div id='footer'>
