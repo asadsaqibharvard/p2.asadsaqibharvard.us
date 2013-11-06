@@ -15,7 +15,7 @@ class users_controller extends base_controller {
         #Set up the view
         $this->template->content=View::instance('v_users_signup');
 
-        $request_url = apache_getenv("HTTP_HOST") . apache_getenv("REQUEST_URI");
+        $request_url = $_SERVER['REQUEST_URI'];
 
         # check if we got an error message
         if (strpos($request_url,'err=1') !== false)
