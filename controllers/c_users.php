@@ -14,6 +14,7 @@ class users_controller extends base_controller {
 
         #Set up the view
         $this->template->content=View::instance('v_users_signup');
+        $this->template->title = "Sign Up";
 
         $request_url = $_SERVER['REQUEST_URI'];
 
