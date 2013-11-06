@@ -1,4 +1,4 @@
-<h1>Welcome back <?=$user->first_name;?></h1>
+<h1>Below are the users you are following <?=$user->first_name;?></h1>
 
 <?php foreach($posts as $post): ?>
 
