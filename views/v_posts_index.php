@@ -6,15 +6,17 @@
 
 	<div>
 		<img src='/uploads/<?=$post['post_user_id']?>.jpg' width='50' height='50' />
-		<?=$post['first_name']?> <?=$post['last_name']?> posted:
+		<?=$post['first_name']?> <?=$post['last_name']?> posted at:
 	</div>
+
+
+	<time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
+        <?=Time::display($post['created'])?><br /> 
+    </time>
 
     <p><?=$post['content']?></p>
 
-    <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-        <?=Time::display($post['created'])?>
-    </time>
-
+    
 </article>
 
 <?php endforeach; ?>
