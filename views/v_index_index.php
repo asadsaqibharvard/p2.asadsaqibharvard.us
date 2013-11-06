@@ -7,7 +7,7 @@
 	</div>
 	<br />
 	
-	<img src='/images/lion_cute.png' class='imagecenter' />
+	<img src='/images/lion_cute.png' alt="YUSI logo" class='imagecenter' />
 	<br />
 	
 	<div class='center'>
