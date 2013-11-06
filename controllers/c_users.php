@@ -53,7 +53,6 @@ class users_controller extends base_controller {
         # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
-
         # validate fields
         if(empty($_POST['first_name'])){
             Router::redirect("/users/signup?err=2");
